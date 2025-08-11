@@ -1,4 +1,5 @@
-Integrantes:
+# BIT-o
+## Integrantes:
 Nicolás Jersonsky - HARDWARE
 Nicolás Matías Widder - HARDWARE
 Juan Bautista Godoy - TIMI
