@@ -1,5 +1,6 @@
-let boton = document.getElementsById("Boton-inicio");
+let continueButton = document.getElementById("boton-continuar");
 function continuar(){
-    
+    window.location.href = "../Tutorial/tutorial.html";
 }
-boton.addEventListener("Click", continuar);
+continueButton.addEventListener("click", continuar);
+

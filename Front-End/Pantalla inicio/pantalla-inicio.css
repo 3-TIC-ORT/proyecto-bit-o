@@ -9,7 +9,7 @@
 
 body{
     background-color: #000000;
-}
+
 #contenedor-logo{
     display: flex;
     justify-content: center;
@@ -34,4 +34,21 @@ body{
     align-items: center;
     justify-content: center;
     font-size: 100px;
+    cursor: pointer;
+}
+#cambio-modo{
+    width: 203px;
+    height: 100px;
+    border-radius:50px;
+    background-color: #fff;
+    display: flex;
+    justify-self: flex-end;
+    position: relative;
+    top: 90px;
+    right: 87px;
+
+}
+}
+body.claro{
+
 }
