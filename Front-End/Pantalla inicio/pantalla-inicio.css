@@ -44,12 +44,48 @@ body{
     display: flex;
     justify-self: flex-end;
     justify-content: space-between;
-    align-content: center;
+    flex-direction: row;
+    align-items: center;
     position: relative;
     top: 90px;
     right: 87px;
+    cursor: pointer;
+}
+#selector-modo-oscuro{
+    border-radius: 91px;
+    width: 91px;
+    height: 91px;
+    background-color: #000;
+    position: absolute;
+    left: 2px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
+#modo-oscuro{
+    z-index: 10;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+}
+#selector-modo-claro{
+    border-radius: 91px;
+    width: 91px;
+    height: 91px;
+    background-color: #fff;
+    position: absolute;
+    right: 2px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    opacity: 1;
+}
+#modo-claro{
+    z-index: 10;
+    justify-self: center;
+    align-self: center;
+}
 body.claro{
 
 }
