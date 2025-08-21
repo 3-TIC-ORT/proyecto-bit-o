@@ -87,5 +87,20 @@ body{
     align-self: center;
 }
 body.claro{
-
+    background-color: #eee;
+    p{
+        color: #000;
+    }
+    #selector-modo-claro{
+        opacity: 1;
+    }
+    #selector-modo-oscuro{
+        opacity: 0;
+    }
+    #cambio-modo{
+        background-color: #000;
+    }
+    #modo-oscuro{
+        opacity: 1;
+    }
 }

@@ -3,4 +3,14 @@ function continuar(){
     window.location.href = "../Tutorial/tutorial.html";
 }
 continueButton.addEventListener("click", continuar);
+let toggle = document.getElementById("cambio-modo");
+let logo = document.getElementById("logo");
+function toggleMode(){
+    let body = document.getElementById("body");
+    body.classList.toggle("claro");
+    logo.src = logo.src.includes("Logo-modo-oscuro.png") 
+        ? "../Imagenes/Logo-Principal.png" 
+        : "../Imagenes/Logo-modo-oscuro.png";
+}
+toggle.addEventListener("click", toggleMode);
 
