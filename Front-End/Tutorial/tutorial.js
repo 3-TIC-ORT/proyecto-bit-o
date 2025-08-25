@@ -1,1 +1,1 @@
-
+localStorage.getItem(theme);

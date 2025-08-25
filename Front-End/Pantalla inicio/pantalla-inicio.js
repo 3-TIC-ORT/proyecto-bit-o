@@ -11,6 +11,12 @@ function toggleMode(){
     logo.src = logo.src.includes("Logo-modo-oscuro.png") 
         ? "../Imagenes/Logo-modo-claro.png" 
         : "../Imagenes/Logo-modo-oscuro.png";
+        if (body.classList.contains("claro")){
+            localStorage.setItem("modo", "claro");
+        }
+        else{
+            localStorage.setItem("modo", "oscuro");
+        }
 }
 toggle.addEventListener("click", toggleMode);
 
