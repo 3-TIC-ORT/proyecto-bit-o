@@ -87,6 +87,9 @@ body{
     justify-self: center;
     align-self: center;
 }
+#contenedor-cambio-modo{
+    position: fixed;
+}
 body.claro{
     transition: all 0.3s ease-in;
     background-color: #fafafa;

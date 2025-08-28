@@ -1,1 +1,6 @@
-
+body{
+    background-color: #000;
+}
+body.claro{
+    background-color: #fafafa;
+}
