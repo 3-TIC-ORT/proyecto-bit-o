@@ -5,6 +5,7 @@
 }
 body{
     background-color: #000;
+    height: 100vh;
 
     #cambio-modo{
         width: 203px;
@@ -76,6 +77,49 @@ body{
     left: 390px;
     top: 132px;
     }
+    p{
+    color: #FAFAFA;
+    font-family: "Jersey 25";
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    }
+    #containerInstrucciones{
+        display: flex;
+        justify-content: center;
+    }
+    #instrucciones{
+        width: 1731px;
+        position: absolute;
+        top: 263px;
+    }
+    #container-lista-instrucciones{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        top: 500px;
+    }
+    .lista-instrucciones {
+        display: flex;
+        align-items: center; 
+        gap: 10px; 
+      }
+    li{
+        color: #FAFAFA;
+        color: #FAFAFA;
+        font-family: "Jersey 25";
+        font-size: 60px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    li::marker{
+        color: aqua;
+        font-size: 40px;
+    }
+
 }
 body.claro{
     background-color: #fafafa;
