@@ -9,7 +9,8 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    height: 100vh;
+    transition: all 0.3s ease-in;
 }
 
 header{
@@ -31,6 +32,8 @@ header{
     right: 20px;
     cursor: pointer;
     padding: 5px;
+    margin-right: 100px;
+    margin-top: 100px;
 }
 #selector-modo-oscuro,
 #selector-modo-claro {
@@ -60,6 +63,8 @@ header{
 #logo {
     width: 201px;
     height: 125.261px;
+    margin-top: 97px;
+    margin-left: 97px;
 }
 
 /* TITULO */
@@ -71,7 +76,8 @@ h1 {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin: 40px 0 20px;
+    margin-top: 132px;
+    margin-left: 92px;
 }
 
 /* PÁRRAFOS */
@@ -106,6 +112,7 @@ p {
     gap: 20px;
     margin-top: 57px;
     padding: 0 20px;
+    width: 100vw;
 }
 .lista-instrucciones {
     display: flex;
@@ -135,10 +142,6 @@ li {
     font-weight: 400;
     line-height: normal;
 }
-li::marker {
-    color: aqua;
-    font-size: 40px;
-}
 /* BOTON */
 #contenedor-boton-continuar {
     display: flex;
@@ -147,8 +150,8 @@ li::marker {
     width: 100%;
 }
 #boton-continuar {
-    width: 807px;      /* medida original */
-    height: 200px;     /* medida original */
+    width: 640px;      /* medida original */
+    height: 140px;     /* medida original */
     background-color: #39B09D;
     border-radius: 54px;
     display: flex;
@@ -158,6 +161,9 @@ li::marker {
     cursor: pointer;
     text-align: center;
     max-width: 100%;   /* evita desbordes */
+    position: absolute;
+    bottom: 70px;
+    right: 100px;
 }
 #boton-continuar:hover {
     background-color: #046d5b;
@@ -169,4 +175,13 @@ body.claro {
 }
 body.claro #cambio-modo {
     background-color: #1a1a1a;
+}
+body.claro h1{
+    color: #000;
+}
+body.claro p{
+    color: #000;
+}
+body.claro li{
+    color: #000;
 }

@@ -18,3 +18,8 @@ function toggleMode(){
         }
 }
 toggle.addEventListener("click", toggleMode);
+let continueButton = document.getElementById("boton-continuar");
+function continuar(){
+    window.location.href = "../Pantalla-principal/pantalla-principal.html";
+}
+continueButton.addEventListener("click", continuar);
