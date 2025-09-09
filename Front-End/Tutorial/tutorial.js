@@ -1,10 +1,11 @@
 let modo = localStorage.getItem("modo");
+let toggle = document.getElementById("cambio-modo");
+let logo = document.getElementById("logo")
 console.log(modo)
 if (modo == "claro"){
     document.body.classList.toggle("claro");
+    logo.src = "../Imagenes/Logo-bito-chico-negro.png";
 }
-let toggle = document.getElementById("cambio-modo");
-let logo = document.getElementById("logo")
 function toggleMode(){
     document.body.classList.toggle("claro");
         logo.src = logo.src.includes("Logo-bito-chico-blanco.png") 
