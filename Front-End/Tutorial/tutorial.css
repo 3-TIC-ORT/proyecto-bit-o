@@ -11,6 +11,7 @@ body {
     flex-direction: column;
     height: 100vh;
     transition: all 0.3s ease-in;
+    width: 100vw;
 }
 
 header{
@@ -27,7 +28,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
+    position: absolute;
     top: 20px;
     right: 20px;
     cursor: pointer;
@@ -184,4 +185,23 @@ body.claro p{
 }
 body.claro li{
     color: #000;
+}
+@media (max-width: 1366px) {
+    #boton-continuar{
+        width: 360px;
+        height: 86px;
+        bottom: 50px;
+        right: 50px;
+    }
+    #logo{
+        width: 142px;
+        height: 88.49px;
+    }
+    p{
+        font-size: 40px;
+    }
+    #containerInstrucciones{
+        width: 1229px;
+        height: 120px;
+    }
 }
