@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/3-TIC-ORT/proyecto-bit-o/issues"
   },
-  "homepage": "https://github.com/3-TIC-ORT/proyecto-bit-o#readme"
+  "homepage": "https://github.com/3-TIC-ORT/proyecto-bit-o#readme",
+  "dependencies": {
+    "serialport": "^13.0.0",
+    "soquetic": "^1.4.2"
+  }
+  
 }
