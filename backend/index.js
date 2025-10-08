@@ -25,7 +25,7 @@ subscribePOSTEvent("teclaRight", tecla);
 subscribePOSTEvent("teclaUp", tecla);
 subscribePOSTEvent("teclaDown", tecla);
 function tecla (msg) {
-    port.write(`${msg.msg} \n`, (err) => {
+    port.write(`${msg.msg}\n`, (err) => {
       if (err) {
         console.error("Error al enviar al Arduino:", err.message);
       } else {
