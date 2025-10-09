@@ -7,7 +7,7 @@ document.addEventListener("keydown", function(event) {
 
     if (event.key === "ArrowUp" || event.key === "w" || event.key === "W") {
       console.log("Se presionó la flecha ↑");
-      postEvent("teclaUp", {msg: event.key});
+      postEvent("teclaUp", {msg: "w"});
     }
 
     if (event.key === "ArrowDown") {
@@ -22,7 +22,7 @@ document.addEventListener("keydown", function(event) {
 
     if (event.key === "ArrowRight") {
       console.log("Se presionó la flecha →");
-      postEvent("teclRight", {msg: event.key});
+      postEvent("teclaRight", {msg: event.key});
     }
   });
   connect2Server();
