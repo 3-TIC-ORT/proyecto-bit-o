@@ -9,7 +9,7 @@ import { ReadlineParser, SerialPort } from "serialport";
 
 const port = new SerialPort({
   //Completar con el puerto correcto
-  path: "COM6",
+  path: "COM5",
   baudRate: 9600,
 });
 

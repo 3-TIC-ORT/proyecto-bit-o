@@ -7,7 +7,7 @@ document.addEventListener("keydown", function(event) {
 
     if (event.key === "ArrowUp" || event.key === "w" || event.key === "W") {
       console.log("Se presionó la flecha ↑");
-      postEvent("teclaUp", {msg: "w"});
+      postEvent("teclaUp", {msg: event.key});
     }
 
     if (event.key === "ArrowDown") {
