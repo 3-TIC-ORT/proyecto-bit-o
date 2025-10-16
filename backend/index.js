@@ -5,22 +5,26 @@ import {
   startServer,
 } from "soquetic";
 import fs from "fs";
-import { ReadlineParser, SerialPort } from "serialport";
+import { WebSocketServer } from "ws";
 
-const port = new SerialPort({
-  //Completar con el puerto correcto
-  path: "COM5",
-  baudRate: 9600,
+const wss = new WebSocketServer({ port: 8080 });
+let esp32 = null;
+
+wss.on("connection", (ws) => {
+  console.log("ESP32 conectado");
+  esp32 = ws;
+
+  ws.on("message", (msg) => {
+    console.log("Mensaje del ESP32:", msg.toString());
+  });
+
+  ws.on("close", () => {
+    console.log("ESP32 desconectado");
+    esp32 = null;
+  });
 });
 
-const parser = new ReadlineParser();
-port.pipe(parser);
-
-//const parser = port.pipe(new ReadlineParser({ delimiter: "\r\n" }));
-
-port.on("open", () => {
-  console.log("Puerto serial abierto");
-});
+console.log("Servidor WebSocket escuchando en puerto 8080");
 
 subscribePOSTEvent("teclaL", tecla);
 subscribePOSTEvent("teclaLeft", tecla);
@@ -28,15 +32,14 @@ subscribePOSTEvent("teclaRight", tecla);
 subscribePOSTEvent("teclaUp", tecla);
 subscribePOSTEvent("teclaDown", tecla);
 
-function tecla (msg) {
-    port.write(`${msg.msg}\n`, (err) => {
-      if (err) {
-        console.error("Error al enviar al Arduino:", err.message);
-      } else {
-        console.log("Enviado al Arduino:", msg.msg);
-      }
-    });
-    return { msg: `Mensaje recibido: letra ${msg.msg}` };
-}
+function tecla(msg) {
+  if (!esp32) {
+    console.log("No hay ESP32 conectado");
+    return;
+  }
 
+  const comando = msg.msg;
+  esp32.send(comando);
+  console.log("Enviado al ESP32:", comando);
+}
 startServer();
