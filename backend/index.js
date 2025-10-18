@@ -8,19 +8,19 @@ import fs from "fs";
 import { WebSocketServer } from "ws";
 
 const wss = new WebSocketServer({ port: 8080 });
-let esp32 = null;
+let esp = null;
 
 wss.on("connection", (ws) => {
-  console.log("ESP32 conectado");
-  esp32 = ws;
+  console.log("esp conectado");
+  esp = ws;
 
   ws.on("message", (msg) => {
-    console.log("Mensaje del ESP32:", msg.toString());
+    console.log("Mensaje del esp:", msg.toString());
   });
 
   ws.on("close", () => {
-    console.log("ESP32 desconectado");
-    esp32 = null;
+    console.log("esp desconectado");
+    esp = null;
   });
 });
 
@@ -33,13 +33,13 @@ subscribePOSTEvent("teclaUp", tecla);
 subscribePOSTEvent("teclaDown", tecla);
 
 function tecla(msg) {
-  if (!esp32) {
-    console.log("No hay ESP32 conectado");
+  if (!esp) {
+    console.log("No hay esp conectado");
     return;
   }
 
-  const comando = msg.msg;
-  esp32.send(comando);
-  console.log("Enviado al ESP32:", comando);
+  let comando = msg.msg;
+  esp.send(comando);
+  console.log("Enviado al esp:", comando);
 }
 startServer();
