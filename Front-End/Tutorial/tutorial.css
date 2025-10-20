@@ -19,6 +19,8 @@ body {
 header{
     display: flex;
     flex-direction: row;
+    width: 90vw;
+    justify-content: flex-start;
 }
 
 /* CAMBIO DE MODO */
@@ -68,6 +70,7 @@ header{
     height: 125.261px;
     margin-top: 97px;
     margin-left: 97px;
+    margin-right: 5vw;
 }
 
 /* TITULO */
