@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    transition: all 0.3s ease-in;
+    width: 100vw;
+    align-items: center;
+    text-align: center;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+    justify-content: flex-start;
+}
+
+/* CAMBIO DE MODO */
+#cambio-modo {
+    width: 203px;
+    height: 100px;
+    border-radius: 50px;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 100px;
+    margin-top: 100px;
+}
+#selector-modo-oscuro,
+#selector-modo-claro {
+    border-radius: 91px;
+    width: 91px;
+    height: 91px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#selector-modo-oscuro {
+    background-color: #1a1a1a;
+}
+#selector-modo-claro {
+    background-color: #fafafa;
+    opacity: 1;
+}
+#modo-oscuro,
+#modo-claro {
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* LOGO */
+#logo {
+    width: 201px;
+    height: 125.261px;
+    margin-top: 97px;
+    margin-left: 97px;
+    margin-right: 5vw;
+}
+
+/* TITULO */
+h1 {
+    color: #FAFAFA;
+    text-align: center;
+    font-family: "Jersey 25";
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 132px;
+    margin-left: 92px;
+}
+body.claro {
+    background-color: #fafafa;
+}
+body.claro #cambio-modo {
+    background-color: #1a1a1a;
+}
+body.claro h1{
+    color: #000;
+}
+@media (max-width: 1366px) {
+    #logo{
+        width: 142px;
+        height: 88.49px;
+        margin-top: 60px;
+    }
+    h1{
+        font-size: 65px;
+        margin-top: 83.5px;
+    }
+
+    p{
+        font-size: 40px;
+    }
+    #containerInstrucciones{
+        width: 1229px;
+        height: 120px;
+    }
+    #cambio-modo{
+        margin-right: 72px;
+        margin-top: 55px;
+        width: 84px;
+        height: 48px;
+    }
+    #selector-modo-oscuro,
+    #selector-modo-claro{
+        width: 38px;
+        height: 38px;
+}
+#modo-oscuro-img{
+    width: 28px;
+    height: 28px;
+}
+#modo-claro-img {
+    width: 28px;
+    height: 28px;
+}
+}
