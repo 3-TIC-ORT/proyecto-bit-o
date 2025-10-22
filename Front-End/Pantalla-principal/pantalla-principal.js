@@ -46,4 +46,24 @@ document.addEventListener("keydown", function(event) {
       postEvent("teclaRight", {msg: event.key});
     }
   });
+  function LDR(msg){
+    console.log(msg);
+    if (msg == "LDR:ON"){
+      //Hacer cosas si esta ON
+    }
+    else if (msg == "LDR:OFF"){
+      //Hacer cosas si esta OFF
+    }
+  }
+    function US(msg){
+      console.log(msg);
+      if (msg == "LDR:ON"){
+        //Hacer cosas si esta ON
+      }
+      else if (msg == "LDR:OFF"){
+        //Hacer cosas si esta OFF
+      }
+  }
+  subscribeRealTimeEvent("LDR", LDR);
+  subscribeRealTimeEvent("US", US);
   connect2Server();

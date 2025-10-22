@@ -16,6 +16,18 @@ wss.on("connection", (ws) => {
 
   ws.on("message", (msg) => {
     console.log("Mensaje del esp:", msg.toString());
+    if (msg == "LDR:ON"){  //LDR
+      realTimeEvent("LDR", {msg:"LDR:ON"})
+    }
+    else if (msg == "LDR:OFF"){
+      realTimeEvent("LDR", {msg:"LDR:OFF"})
+    }
+    else if (msg == "US:ON"){ //Ultasonico
+      realTimeEvent("US", {msg:"US:ON"})
+    }
+    else if (msg == "US:OFF"){
+      realTimeEvent("US", {msg:"US:OFF"})
+    }
   });
 
   ws.on("close", () => {
