@@ -137,7 +137,7 @@ main{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 60vw;
+    width: 80vw;
 }
 .flechasUpDown{
     display: flex;
