@@ -7,6 +7,10 @@ const flechaRight = document.getElementById("flechaRight");
 const flechaDown = document.getElementById("flechaDown");
 const flechaLeft = document.getElementById("flechaLeft");
 const flechaL = document.getElementById("flechaL");
+const alertaDown = document.getElementById("alertaDown");
+const alertaUp = document.getElementById("alertaUp");
+const alertaLeft = document.getElementById("alertaLeft");
+const alertaRight = document.getElementById("alertaRight");
 console.log(modo);
 if (modo == "claro"){
     document.body.classList.toggle("claro");
@@ -101,11 +105,17 @@ function toggleMode(){
   }
     function US(msg){
       console.log(msg);
-      if (msg == "LDR:ON"){
-        //Hacer cosas si esta ON
+      if (msg == "US:ON"){
+        alertaUp.style.display = "block";
+        alertaDown.style.display = "block";
+        alertaLeft.style.display = "block";
+        alertaRight.style.display = "block";
       }
-      else if (msg == "LDR:OFF"){
-        //Hacer cosas si esta OFF
+      else if (msg == "US:OFF"){
+        alertaUp.style.display = "none";
+        alertaDown.style.display = "none";
+        alertaLeft.style.display = "none";
+        alertaRight.style.display = "none";
       }
   }
   subscribeRealTimeEvent("LDR", LDR);

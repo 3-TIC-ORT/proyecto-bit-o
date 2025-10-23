@@ -155,3 +155,36 @@ main{
 .teclaL{
     margin-top: 3vw;
 }
+ .auto{
+     position: relative;
+ } 
+  .overlay {
+    position: absolute;
+    width: 50px; /* tamaño de los overlays */
+    height: 50px;
+    display: none;
+  }
+  
+  .arriba {
+    top: -70px; /* por encima del auto */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .abajo {
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .izquierda {
+    left: -70px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .derecha {
+    right: -70px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
