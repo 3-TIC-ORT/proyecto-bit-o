@@ -160,7 +160,7 @@ main{
  } 
   .overlay {
     position: absolute;
-    
+    display: none;
   }
   
   .arriba {
