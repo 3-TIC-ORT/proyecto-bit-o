@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: all 0.3s ease-in;
 }
 
 body {
@@ -10,7 +11,6 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    transition: all 0.3s ease-in;
     width: 100vw;
     align-items: center;
     text-align: center;
@@ -94,7 +94,7 @@ body.claro #cambio-modo {
 body.claro h1{
     color: #000;
 }
-@media (max-width: 1366px) {
+@media (max-width: 1600px) {
     #logo{
         width: 142px;
         height: 88.49px;
