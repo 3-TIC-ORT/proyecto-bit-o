@@ -38,12 +38,11 @@ wss.on("connection", (ws) => {
 
 console.log("Servidor WebSocket escuchando en puerto 8080");
 
-subscribePOSTEvent("teclaLOn", tecla);
+subscribePOSTEvent("teclaL", tecla);
 subscribePOSTEvent("teclaLeftOn", tecla);
 subscribePOSTEvent("teclaRightOn", tecla);
 subscribePOSTEvent("teclaUpOn", tecla);
 subscribePOSTEvent("teclaDownOn", tecla);
-subscribePOSTEvent("teclaLOff", tecla);
 subscribePOSTEvent("teclaLeftOff", tecla);
 subscribePOSTEvent("teclaRightOff", tecla);
 subscribePOSTEvent("teclaUpOff", tecla);

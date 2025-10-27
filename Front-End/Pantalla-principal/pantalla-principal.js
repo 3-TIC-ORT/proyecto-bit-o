@@ -13,9 +13,11 @@ const alertaLeft = document.getElementById("alertaLeft");
 const alertaRight = document.getElementById("alertaRight");
 const luzAdelante = document.getElementById("luzAdelante");
 const luzAtras = document.getElementById("luzAtras");
+let lucesEncendidas = false;
+let controlManual = false; 
 console.log(modo);
-if (modo == "claro"){
-    document.body.classList.toggle("claro");
+if (modo === "claro"){
+    document.body.classList.add("claro");
     logo.src = "../Imagenes/Logo-bito-chico-negro.png";
 }
 function toggleMode(){
@@ -35,10 +37,20 @@ function toggleMode(){
     if (event.repeat) return;
     if (event.key === "l" || event.key === "L") {
       console.log("Se presionó la letra L");
-      postEvent("teclaLOn", {msg: `${event.key}On`});
+      postEvent("teclaL", {msg: `${event.key}`});
       flechaL.src = "../Imagenes/Tecla-l-clara.png";
-    }
+      lucesEncendidas = !lucesEncendidas;  // si estaban apagadas → se prenden; si estaban prendidas → se apagan
+      controlManual = true;                 // el usuario tomó control manual (el LDR no puede apagarlas solo)
 
+      if (lucesEncendidas) {
+        luzAdelante.style.display = "block";  // prender luces delanteras
+        luzAtras.style.display = "block";     // prender luces traseras
+  }   
+      else {
+        luzAdelante.style.display = "none";   // apagar luces delanteras
+        luzAtras.style.display = "none";      // apagar luces traseras
+  }
+}
     if (event.key === "ArrowUp" || event.key === "w" || event.key === "W") {
       console.log("Se presionó la flecha ↑");
       postEvent("teclaUpOn", {msg: `${event.key}On`});
@@ -67,12 +79,7 @@ function toggleMode(){
   document.addEventListener("keyup", function(event) {
     if (event.key === "l" || event.key === "L") {
       console.log("Se soltó la letra L");
-      postEvent("teclaLOff", { msg: `${event.key}Off` });
       flechaL.src = "../Imagenes/Tecla-l.png";
-      luzAdelante.style.display =
-      (luzAdelante.style.display === "none" || luzAdelante.style.display === "")
-        ? "block"
-        : "none";
     }
   
     if (event.key === "ArrowUp" || event.key === "w" || event.key === "W") {
@@ -102,15 +109,24 @@ function toggleMode(){
 
   function LDR(msg){
     console.log(msg);
-    if (msg == "LDR:ON"){
-      luzAtras.style.display = "block";
-      luzAdelante.style.display = "block";
-    }
-    else if (msg == "LDR:OFF"){
+      if (msg == "LDR:ON") {
+    // Siempre se tiene en cuenta: el sensor puede encender las luces
+    luzAtras.style.display = "block";
+    luzAdelante.style.display = "block";
+    lucesEncendidas = true;
+  } 
+  else if (msg == "LDR:OFF") {
+    // Solo apaga si el usuario NO tomó control manual
+    if (!controlManual) {
       luzAtras.style.display = "none";
       luzAdelante.style.display = "none";
+      lucesEncendidas = false;
+    } 
+    else {
+      console.log("LDR:OFF ignorado (luces forzadas por el usuario)");
     }
   }
+}
     function US(msg){
       console.log(msg);
       if (msg == "US:ON"){
