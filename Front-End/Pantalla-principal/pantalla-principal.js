@@ -1,5 +1,3 @@
-import { text } from "body-parser";
-
 connect2Server();
 let modo = localStorage.getItem("modo");
 let toggle = document.getElementById("cambio-modo");
