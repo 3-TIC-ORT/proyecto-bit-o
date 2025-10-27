@@ -86,7 +86,7 @@ function toggleMode(){
   
     if (event.key === "ArrowUp" || event.key === "w" || event.key === "W") {
       console.log("Se soltó la flecha ↑");
-      postEvent("teclaUpOff", { msg: `${event.key}Off` });
+      postEvent("teclaUpOff", { msg: `U`});
       flechaUp.src = "../Imagenes/Tecla-flecha-arriba.png";
     }
   
@@ -110,14 +110,14 @@ function toggleMode(){
   });
 
   function LDR(msg){
-    console.log(msg);
-      if (msg == "LDR:ON") {
+    console.log(msg.msg);
+      if (msg.msg == "LDR:ON") {
     // Siempre se tiene en cuenta: el sensor puede encender las luces
     luzAtras.style.display = "block";
     luzAdelante.style.display = "block";
     lucesEncendidas = true;
   } 
-  else if (msg == "LDR:OFF") {
+  else if (msg.msg == "LDR:OFF") {
     // Solo apaga si el usuario NO tomó control manual
     if (!controlManual) {
       luzAtras.style.display = "none";
@@ -130,14 +130,14 @@ function toggleMode(){
   }
 }
     function US(msg){
-      console.log(msg);
-      if (msg == "US:ON"){
+      console.log(msg.msg);
+      if (msg.msg == "US:ON"){
         alertaUp.style.display = "block";
         alertaDown.style.display = "block";
         alertaLeft.style.display = "block";
         alertaRight.style.display = "block";
       }
-      else if (msg == "US:OFF"){
+      else if (msg.msg == "US:OFF"){
         alertaUp.style.display = "none";
         alertaDown.style.display = "none";
         alertaLeft.style.display = "none";
@@ -145,11 +145,11 @@ function toggleMode(){
       }
   }
   function esp(msg){
-    if (msg === "esp:ON"){
-     //hacer cosas si esta on
+    if (msg.msg === "esp:ON"){
+     busqueda.textContent='ESP conectado';
     }
-    else{
-      //hacer cosas si esta off
+    else if (msg.msg === "esp:OFF"){
+      busqueda.textContent='ESP desconectado';
     }
   }
   subscribeRealTimeEvent("LDR", LDR);

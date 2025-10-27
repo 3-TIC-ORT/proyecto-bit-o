@@ -32,14 +32,14 @@ wss.on("connection", (ws) => {
 
   ws.on("close", () => {
     console.log("esp desconectado");
-    esp = null;
+    esp = false;
   });
 });
 
 setInterval(() => {
-  if (esp) {
+  if (esp && esp.readyState === 1) {
     realTimeEvent("esp", { msg: "esp:ON" });
-  } else {
+  } else{
     realTimeEvent("esp", { msg: "esp:OFF" });
   }
 }, 1000);
