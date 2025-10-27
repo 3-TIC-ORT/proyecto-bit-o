@@ -1,3 +1,5 @@
+import { text } from "body-parser";
+
 connect2Server();
 let modo = localStorage.getItem("modo");
 let toggle = document.getElementById("cambio-modo");
@@ -13,6 +15,8 @@ const alertaLeft = document.getElementById("alertaLeft");
 const alertaRight = document.getElementById("alertaRight");
 const luzAdelante = document.getElementById("luzAdelante");
 const luzAtras = document.getElementById("luzAtras");
+const containerBusqueda = document.getElementById("containerBusqueda");
+const busqueda = document.getElementById("busqueda");
 let lucesEncendidas = false;
 let controlManual = false; 
 console.log(modo);
@@ -142,5 +146,14 @@ function toggleMode(){
         alertaRight.style.display = "none";
       }
   }
+  function esp(msg){
+    if (msg === "esp:ON"){
+     //hacer cosas si esta on
+    }
+    else{
+      //hacer cosas si esta off
+    }
+  }
   subscribeRealTimeEvent("LDR", LDR);
   subscribeRealTimeEvent("US", US);
+  subscribeRealTimeEvent("esp", esp)

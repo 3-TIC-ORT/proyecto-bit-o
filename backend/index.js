@@ -36,6 +36,14 @@ wss.on("connection", (ws) => {
   });
 });
 
+setInterval(() => {
+  if (esp) {
+    realTimeEvent("esp", { msg: "esp:ON" });
+  } else {
+    realTimeEvent("esp", { msg: "esp:OFF" });
+  }
+}, 1000);
+
 console.log("Servidor WebSocket escuchando en puerto 8080");
 
 subscribePOSTEvent("teclaL", tecla);
