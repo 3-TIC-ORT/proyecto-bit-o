@@ -154,4 +154,4 @@ function toggleMode(){
   }
   subscribeRealTimeEvent("LDR", LDR);
   subscribeRealTimeEvent("US", US);
-  subscribeRealTimeEvent("esp", esp)
+  subscribeRealTimeEvent("esp", esp);
