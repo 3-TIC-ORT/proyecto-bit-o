@@ -200,3 +200,13 @@ main{
     top: 50%;
     transform: translateY(-50%);
   }
+  .izquierdaGiro{
+    right: -60px;
+    top: -40px;
+    transform: translateY(-50%);
+  }
+  .derechaGiro{
+    right: -60px;
+    bottom: -100px;
+    transform: translateY(-50%);
+  }

@@ -15,6 +15,8 @@ const luzAdelante = document.getElementById("luzAdelante");
 const luzAtras = document.getElementById("luzAtras");
 const containerBusqueda = document.getElementById("containerBusqueda");
 const busqueda = document.getElementById("busqueda");
+const giroIzq = document.getElementById("izquierdaGiro");
+const giroDer = document.getElementById("derechaGiro");
 let lucesEncendidas = false;
 let controlManual = false; 
 console.log(modo);
@@ -69,12 +71,14 @@ function toggleMode(){
       console.log("Se presionó la flecha ←");
       postEvent("teclaLeftOn", {msg: `${event.key}On`});
       flechaLeft.src = "../Imagenes/Tecla-flecha-izquierda-clara.png";
+      giroIzq.style.display = "block";
     }
 
     if (event.key === "ArrowRight") {
       console.log("Se presionó la flecha →");
       postEvent("teclaRightOn", {msg: `${event.key}On`});
       flechaRight.src = "../Imagenes/Tecla-flecha-derecha-clara.png";
+      giroDer.style.display = "block";
     }
   });
 
@@ -100,12 +104,14 @@ function toggleMode(){
       console.log("Se soltó la flecha ←");
       postEvent("teclaLeftOff", { msg: `${event.key}Off` });
       flechaLeft.src = "../Imagenes/Tecla-flecha-izquierda.png";
+      giroIzq.style.display = "none";
     }
   
     if (event.key === "ArrowRight") {
       console.log("Se soltó la flecha →");
       postEvent("teclaRightOff", { msg: `${event.key}Off` });
       flechaRight.src = "../Imagenes/Tecla-flecha-derecha.png";
+      giroDer.style.display = "none";
     }
   });
 
