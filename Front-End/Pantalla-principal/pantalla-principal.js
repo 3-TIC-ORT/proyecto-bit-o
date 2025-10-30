@@ -90,7 +90,7 @@ function toggleMode(){
   
     if (event.key === "ArrowUp" || event.key === "w" || event.key === "W") {
       console.log("Se soltó la flecha ↑");
-      postEvent("teclaUpOff", { msg: `U`});
+      postEvent("teclaUpOff", { msg: `${event.key}Off`});
       flechaUp.src = "../Imagenes/Tecla-flecha-arriba.png";
     }
   

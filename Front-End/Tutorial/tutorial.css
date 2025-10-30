@@ -15,6 +15,9 @@ body {
     align-items: center;
     text-align: center;
 }
+.claro{
+    transition: none;
+}
 
 header{
     display: flex;
