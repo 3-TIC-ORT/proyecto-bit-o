@@ -224,3 +224,14 @@ main{
     bottom: -100px;
     transform: translateY(-50%);
   }
+@media (min-width: 1600px){
+    .auto{
+        transform: scale(1.5);
+    }
+    .teclas{
+        transform: scale(1.5);
+    }
+    main{
+        margin-top: 23vh;
+    }
+}
