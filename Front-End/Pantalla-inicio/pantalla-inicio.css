@@ -7,7 +7,9 @@
     font-style: normal;
     box-sizing: border-box;
 }
-
+body.claro{
+    transition: all 0.3s ease-in;
+}
 body {
     color: #fafafa;
     background-color: #000;

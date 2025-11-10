@@ -4,7 +4,9 @@
     box-sizing: border-box;
     transition: all 0.3s ease-in;
 }
-
+body.claro{
+    transition: all 0.3s ease-in;
+}
 body {
     background-color: #000;
     min-height: 100vh;

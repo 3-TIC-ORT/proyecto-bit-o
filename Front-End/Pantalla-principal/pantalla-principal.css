@@ -4,7 +4,9 @@
     box-sizing: border-box;
     transition: all 0.3s ease-in;
 }
-
+body.claro{
+    transition: all 0.3s ease-in;
+}
 body {
     background-color: #000;
     min-height: 100vh;
@@ -107,6 +109,9 @@ body.claro #cambio-modo {
     background-color: #1a1a1a;
 }
 body.claro h1{
+    color: #000;
+}
+body.claro h2{
     color: #000;
 }
 @media (max-width: 1600px) {
