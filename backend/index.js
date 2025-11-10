@@ -5,47 +5,43 @@ import {
   startServer,
 } from "soquetic";
 import fs from "fs";
-import { WebSocketServer } from "ws";
+import { SerialPort, ReadlineParser } from "serialport";
 
-const wss = new WebSocketServer({ port: 8080 });
-let esp = null;
-
-wss.on("connection", (ws) => {
-  console.log("esp conectado");
-  esp = ws;
-
-  ws.on("message", (msg) => {
-    console.log("Mensaje del esp:", msg.toString());
-    if (msg == "LDR:ON"){  //LDR
-      realTimeEvent("LDR", {msg:"LDR:ON"})
-    }
-    else if (msg == "LDR:OFF"){
-      realTimeEvent("LDR", {msg:"LDR:OFF"})
-    }
-    else if (msg == "US:ON"){ //Ultasonico
-      realTimeEvent("US", {msg:"US:ON"})
-    }
-    else if (msg == "US:OFF"){
-      realTimeEvent("US", {msg:"US:OFF"})
-    }
-  });
-
-  ws.on("close", () => {
-    console.log("esp desconectado");
-    esp = false;
-  });
+let arduino = null;
+arduino = new SerialPort({
+  path: "COM3", // indicar el puerto correspondiente
+  baudRate: 9600,
 });
 
+// Parser para leer líneas completas del Arduino
+const parser = arduino.pipe(new ReadlineParser({ delimiter: "\r\n" }));
+
+// 📩 Mensajes que llegan desde el Arduino
+parser.on("data", (msg) => {
+  console.log("Mensaje del Arduino:", msg);
+
+  if (msg === "LDR:ON") {
+    realTimeEvent("LDR", { msg: "LDR:ON" });
+  } else if (msg === "LDR:OFF") {
+    realTimeEvent("LDR", { msg: "LDR:OFF" });
+  } else if (msg === "US:ON") {
+    realTimeEvent("US", { msg: "US:ON" });
+  } else if (msg === "US:OFF") {
+    realTimeEvent("US", { msg: "US:OFF" });
+  }
+});
+
+// Detecta apertura y errores del puerto
+arduino.on("open", () => console.log("Arduino conectado por SerialPort"));
+arduino.on("error", (err) => console.error("Error en SerialPort:", err.message));
+arduino.on("close", () => console.log("Arduino desconectado"));
 setInterval(() => {
-  if (esp && esp.readyState === 1) {
+  if (arduino && arduino.readable) {
     realTimeEvent("esp", { msg: "esp:ON" });
-  } else{
+  } else {
     realTimeEvent("esp", { msg: "esp:OFF" });
   }
 }, 1000);
-
-console.log("Servidor WebSocket escuchando en puerto 8080");
-
 subscribePOSTEvent("teclaL", tecla);
 subscribePOSTEvent("teclaLeftOn", tecla);
 subscribePOSTEvent("teclaRightOn", tecla);
@@ -55,14 +51,16 @@ subscribePOSTEvent("teclaLeftOff", tecla);
 subscribePOSTEvent("teclaRightOff", tecla);
 subscribePOSTEvent("teclaUpOff", tecla);
 subscribePOSTEvent("teclaDownOff", tecla);
+
 function tecla(msg) {
-  if (!esp) {
-    console.log("No hay esp conectado");
+  if (!arduino) {
+    console.log("No hay Arduino conectado");
     return;
   }
 
   let comando = msg.msg;
-  esp.send(comando);
-  console.log("Enviado al esp:", comando);
+  arduino.write(comando + "\n");
+  console.log("Enviado al Arduino:", comando);
 }
+
 startServer();
