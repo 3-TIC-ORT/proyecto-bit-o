@@ -9,24 +9,25 @@ import { SerialPort, ReadlineParser } from "serialport";
 
 let arduino = null;
 arduino = new SerialPort({
-  path: "COM3", // indicar el puerto correspondiente
+  path: "COM5", // indicar el puerto correspondiente
   baudRate: 9600,
 });
 
-// Parser para leer líneas completas del Arduino
 const parser = arduino.pipe(new ReadlineParser({ delimiter: "\r\n" }));
 
-// 📩 Mensajes que llegan desde el Arduino
+// Mensajes que llegan desde el Arduino
 parser.on("data", (msg) => {
-  console.log("Mensaje del Arduino:", msg);
 
-  if (msg === "LDR:ON") {
+  const message = msg.toString().trim(); // .trim() para quitar espacios y saltos de línea
+  console.log("Mensaje del Arduino:", message);
+
+  if (message === "LDR:ON") {
     realTimeEvent("LDR", { msg: "LDR:ON" });
-  } else if (msg === "LDR:OFF") {
+  } else if (message === "LDR:OFF") {
     realTimeEvent("LDR", { msg: "LDR:OFF" });
-  } else if (msg === "US:ON") {
+  } else if (message === "US:ON") {
     realTimeEvent("US", { msg: "US:ON" });
-  } else if (msg === "US:OFF") {
+  } else if (message === "US:OFF") {
     realTimeEvent("US", { msg: "US:OFF" });
   }
 });

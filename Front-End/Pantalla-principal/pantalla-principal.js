@@ -63,20 +63,20 @@ function toggleMode(){
 
     if (event.key === "ArrowDown") {
       console.log("Se presionó la flecha ↓");
-      postEvent("teclaDownOn", {msg: `${event.key}On`});
+      postEvent("teclaDownOn", {msg: `SOn`});
       flechaDown.src = "../Imagenes/Tecla-flecha-abajo-clara.png";
     }
 
     if (event.key === "ArrowLeft") {
       console.log("Se presionó la flecha ←");
-      postEvent("teclaLeftOn", {msg: `${event.key}On`});
+      postEvent("teclaLeftOn", {msg: `AOn`});
       flechaLeft.src = "../Imagenes/Tecla-flecha-izquierda-clara.png";
       giroIzq.style.display = "block";
     }
 
     if (event.key === "ArrowRight") {
       console.log("Se presionó la flecha →");
-      postEvent("teclaRightOn", {msg: `${event.key}On`});
+      postEvent("teclaRightOn", {msg: `DOn`});
       flechaRight.src = "../Imagenes/Tecla-flecha-derecha-clara.png";
       giroDer.style.display = "block";
     }
@@ -90,26 +90,26 @@ function toggleMode(){
   
     if (event.key === "ArrowUp" || event.key === "w" || event.key === "W") {
       console.log("Se soltó la flecha ↑");
-      postEvent("teclaUpOff", { msg: `${event.key}Off`});
+      postEvent("teclaUpOff", { msg: `WOff`});
       flechaUp.src = "../Imagenes/Tecla-flecha-arriba.png";
     }
   
     if (event.key === "ArrowDown") {
       console.log("Se soltó la flecha ↓");
-      postEvent("teclaDownOff", { msg: `${event.key}Off` });
+      postEvent("teclaDownOff", { msg: `SOff` });
       flechaDown.src = "../Imagenes/Tecla-flecha-abajo.png";
     }
   
     if (event.key === "ArrowLeft") {
       console.log("Se soltó la flecha ←");
-      postEvent("teclaLeftOff", { msg: `${event.key}Off` });
+      postEvent("teclaLeftOff", { msg: `AOff` });
       flechaLeft.src = "../Imagenes/Tecla-flecha-izquierda.png";
       giroIzq.style.display = "none";
     }
   
     if (event.key === "ArrowRight") {
       console.log("Se soltó la flecha →");
-      postEvent("teclaRightOff", { msg: `${event.key}Off` });
+      postEvent("teclaRightOff", { msg: `DOff` });
       flechaRight.src = "../Imagenes/Tecla-flecha-derecha.png";
       giroDer.style.display = "none";
     }
@@ -152,10 +152,10 @@ function toggleMode(){
   }
   function esp(msg){
     if (msg.msg === "esp:ON"){
-     busqueda.textContent='ESP conectado';
+     busqueda.textContent='Arduino conectado';
     }
     else if (msg.msg === "esp:OFF"){
-      busqueda.textContent='ESP desconectado';
+      busqueda.textContent='Arduino desconectado';
     }
   }
   subscribeRealTimeEvent("LDR", LDR);
