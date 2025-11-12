@@ -63,20 +63,20 @@ function toggleMode(){
 
     if (event.key === "ArrowDown") {
       console.log("Se presionó la flecha ↓");
-      postEvent("teclaDownOn", {msg: `SOn`});
+      postEvent("teclaDownOn", {msg: `${event.key}On`});
       flechaDown.src = "../Imagenes/Tecla-flecha-abajo-clara.png";
     }
 
     if (event.key === "ArrowLeft") {
       console.log("Se presionó la flecha ←");
-      postEvent("teclaLeftOn", {msg: `AOn`});
+      postEvent("teclaLeftOn", {msg: `${event.key}On`});
       flechaLeft.src = "../Imagenes/Tecla-flecha-izquierda-clara.png";
       giroIzq.style.display = "block";
     }
 
     if (event.key === "ArrowRight") {
       console.log("Se presionó la flecha →");
-      postEvent("teclaRightOn", {msg: `DOn`});
+      postEvent("teclaRightOn", {msg: `${event.key}On`});
       flechaRight.src = "../Imagenes/Tecla-flecha-derecha-clara.png";
       giroDer.style.display = "block";
     }
@@ -90,26 +90,26 @@ function toggleMode(){
   
     if (event.key === "ArrowUp" || event.key === "w" || event.key === "W") {
       console.log("Se soltó la flecha ↑");
-      postEvent("teclaUpOff", { msg: `WOff`});
+      postEvent("teclaUpOff", { msg: `${event.key}Off`});
       flechaUp.src = "../Imagenes/Tecla-flecha-arriba.png";
     }
   
     if (event.key === "ArrowDown") {
       console.log("Se soltó la flecha ↓");
-      postEvent("teclaDownOff", { msg: `SOff` });
+      postEvent("teclaDownOff", { msg: `${event.key}Off` });
       flechaDown.src = "../Imagenes/Tecla-flecha-abajo.png";
     }
   
     if (event.key === "ArrowLeft") {
       console.log("Se soltó la flecha ←");
-      postEvent("teclaLeftOff", { msg: `AOff` });
+      postEvent("teclaLeftOff", { msg: `${event.key}Off` });
       flechaLeft.src = "../Imagenes/Tecla-flecha-izquierda.png";
       giroIzq.style.display = "none";
     }
   
     if (event.key === "ArrowRight") {
       console.log("Se soltó la flecha →");
-      postEvent("teclaRightOff", { msg: `DOff` });
+      postEvent("teclaRightOff", { msg: `${event.key}Off` });
       flechaRight.src = "../Imagenes/Tecla-flecha-derecha.png";
       giroDer.style.display = "none";
     }

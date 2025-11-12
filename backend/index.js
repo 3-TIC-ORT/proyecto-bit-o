@@ -63,5 +63,4 @@ function tecla(msg) {
   arduino.write(comando + "\n");
   console.log("Enviado al Arduino:", comando);
 }
-
 startServer();
