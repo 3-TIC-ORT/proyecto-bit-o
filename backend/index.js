@@ -4,10 +4,17 @@ import {
   realTimeEvent,
   startServer,
 } from "soquetic";
-import fs from "fs";
 import { SerialPort, ReadlineParser } from "serialport";
 
+let isEspConnected = false;
 let arduino = null;
+
+function connectArduino() {
+  console.log(`Intentando conectar al Arduino en  COM5...`);
+  arduino = new SerialPort(
+    { path: "COM5", baudRate: 9600, autoOpen: false},
+  );
+}
 arduino = new SerialPort({
   path: "COM5", // indicar el puerto correspondiente
   baudRate: 9600,
@@ -33,11 +40,23 @@ parser.on("data", (msg) => {
 });
 
 // Detecta apertura y errores del puerto
-arduino.on("open", () => console.log("Arduino conectado por SerialPort"));
-arduino.on("error", (err) => console.error("Error en SerialPort:", err.message));
-arduino.on("close", () => console.log("Arduino desconectado"));
+arduino.on("open", () =>{
+  console.log("Arduino conectado por SerialPort");
+  isEspConnected = true;
+}
+);
+arduino.on("error", (err) => {
+  console.error("Error en SerialPort:", err.message)
+  isEspConnected = false;
+  setTimeout(connectArduino, 3000);
+});
+arduino.on("close", () =>{
+  console.log("Arduino desconectado")
+  isEspConnected = false;
+  setTimeout(connectArduino, 3000);
+});
 setInterval(() => {
-  if (arduino && arduino.readable) {
+  if (isEspConnected) {
     realTimeEvent("esp", { msg: "esp:ON" });
   } else {
     realTimeEvent("esp", { msg: "esp:OFF" });
