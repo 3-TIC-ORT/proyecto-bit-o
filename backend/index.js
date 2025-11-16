@@ -9,12 +9,6 @@ import { SerialPort, ReadlineParser } from "serialport";
 let isEspConnected = false;
 let arduino = null;
 
-function connectArduino() {
-  console.log(`Intentando conectar al Arduino en  COM5...`);
-  arduino = new SerialPort(
-    { path: "COM5", baudRate: 9600, autoOpen: false},
-  );
-}
 arduino = new SerialPort({
   path: "COM5", // indicar el puerto correspondiente
   baudRate: 9600,
@@ -48,12 +42,10 @@ arduino.on("open", () =>{
 arduino.on("error", (err) => {
   console.error("Error en SerialPort:", err.message)
   isEspConnected = false;
-  setTimeout(connectArduino, 3000);
 });
 arduino.on("close", () =>{
   console.log("Arduino desconectado")
   isEspConnected = false;
-  setTimeout(connectArduino, 3000);
 });
 setInterval(() => {
   if (isEspConnected) {
