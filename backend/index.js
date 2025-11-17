@@ -10,7 +10,7 @@ let isEspConnected = false;
 let arduino = null;
 
 arduino = new SerialPort({
-  path: "COM5", // indicar el puerto correspondiente
+  path: "COM3", // indicar el puerto correspondiente
   baudRate: 9600,
 });
 

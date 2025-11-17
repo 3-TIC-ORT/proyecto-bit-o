@@ -18,7 +18,8 @@ const busqueda = document.getElementById("busqueda");
 const giroIzq = document.getElementById("izquierdaGiro");
 const giroDer = document.getElementById("derechaGiro");
 let lucesEncendidas = false;
-let controlManual = false; 
+let controlManual = false;
+let color = document.getElementById("select");
 console.log(modo);
 if (modo === "claro"){
     document.body.classList.add("claro");
@@ -41,7 +42,7 @@ function toggleMode(){
     if (event.repeat) return;
     if (event.key === "l" || event.key === "L") {
       console.log("Se presionó la letra L");
-      postEvent("teclaL", {msg: `${event.key}`});
+      postEvent("teclaL", {msg: `${color.value}`});
       flechaL.src = "../Imagenes/Tecla-l-clara.png";
       lucesEncendidas = !lucesEncendidas;  // si estaban apagadas → se prenden; si estaban prendidas → se apagan
       controlManual = true;                 // el usuario tomó control manual (el LDR no puede apagarlas solo)
