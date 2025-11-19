@@ -10,7 +10,7 @@ let isEspConnected = false;
 let arduino = null;
 
 arduino = new SerialPort({
-  path: "COM3", // indicar el puerto correspondiente
+  path: "COM5", // indicar el puerto correspondiente
   baudRate: 9600,
 });
 
@@ -22,7 +22,7 @@ parser.on("data", (msg) => {
   const message = msg.toString().trim(); // .trim() para quitar espacios y saltos de línea
   console.log("Mensaje del Arduino:", message);
 
-  if (message === "LDR:ON") {
+ if (message === "LDR:ON") {
     realTimeEvent("LDR", { msg: "LDR:ON" });
   } else if (message === "LDR:OFF") {
     realTimeEvent("LDR", { msg: "LDR:OFF" });
@@ -63,6 +63,7 @@ subscribePOSTEvent("teclaLeftOff", tecla);
 subscribePOSTEvent("teclaRightOff", tecla);
 subscribePOSTEvent("teclaUpOff", tecla);
 subscribePOSTEvent("teclaDownOff", tecla);
+subscribePOSTEvent("TeclaLOff", tecla);
 
 function tecla(msg) {
   if (!arduino) {

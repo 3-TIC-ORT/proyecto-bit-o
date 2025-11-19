@@ -38,11 +38,25 @@ function toggleMode(){
         }
       }
   toggle.addEventListener("click", toggleMode);
+  select.addEventListener("change", ()=>{
+    if(lucesEncendidas===true){
+      postEvent("teclaL", {msg: `${color.value}`});
+    }
+  })
+  flechaUp.addEventListener ("pointerdown", ()=>{
+    console.log("Se presionó la flecha ↓");
+    postEvent("teclaDownOn", {msg: `ArrowUpOn`});
+    flechaUp.src = "../Imagenes/Tecla-flecha-arriba-clara.png";
+  })
+  flechaUp.addEventListener("pointerup", ()=>{
+    console.log("Se soltó la flecha ↑");
+    postEvent("teclaUpOff", { msg: `ArrowUpOff`});
+    flechaUp.src = "../Imagenes/Tecla-flecha-arriba.png";
+  })
   document.addEventListener("keydown", function(event) {
     if (event.repeat) return;
     if (event.key === "l" || event.key === "L") {
       console.log("Se presionó la letra L");
-      postEvent("teclaL", {msg: `${color.value}`});
       flechaL.src = "../Imagenes/Tecla-l-clara.png";
       lucesEncendidas = !lucesEncendidas;  // si estaban apagadas → se prenden; si estaban prendidas → se apagan
       controlManual = true;                 // el usuario tomó control manual (el LDR no puede apagarlas solo)
@@ -50,10 +64,12 @@ function toggleMode(){
       if (lucesEncendidas) {
         luzAdelante.style.display = "block";  // prender luces delanteras
         luzAtras.style.display = "block";     // prender luces traseras
+        postEvent("teclaL", {msg: `${color.value}`});
   }   
       else {
         luzAdelante.style.display = "none";   // apagar luces delanteras
         luzAtras.style.display = "none";      // apagar luces traseras
+        postEvent ("TeclaLOff", {msg: `APAGAR`});
   }
 }
     if (event.key === "ArrowUp" || event.key === "w" || event.key === "W") {
@@ -143,6 +159,8 @@ function toggleMode(){
         alertaDown.style.display = "block";
         alertaLeft.style.display = "block";
         alertaRight.style.display = "block";
+        luzAdelante.style.display = "none";
+        luzAtras.style.display = "none";
       }
       else if (msg.msg == "US:OFF"){
         alertaUp.style.display = "none";
