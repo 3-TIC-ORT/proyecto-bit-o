@@ -171,10 +171,10 @@ function toggleMode(){
   }
   function esp(msg){
     if (msg.msg === "esp:ON"){
-     busqueda.textContent='Arduino conectado';
+     busqueda.textContent='Arduino connected';
     }
     else if (msg.msg === "esp:OFF"){
-      busqueda.textContent='Arduino desconectado';
+      busqueda.textContent='Arduino disconnected';
     }
   }
   subscribeRealTimeEvent("LDR", LDR);
