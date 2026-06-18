@@ -162,21 +162,30 @@ main{
     justify-content: space-around;
     width: 90vw;
 }
-.flechasUpDown{
+.camara {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-.flechas{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    border-radius: 5%;
 }
-.teclaL{
-    margin-top: 3vw;
+
+.camara img {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
+
+@media (max-width: 1600px) {
+    .camara img {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .camara {
+        transform: scale(1.2);
+    }
 }
  .auto{
      position: relative;
@@ -237,6 +246,9 @@ main{
         transform: scale(1.5);
     }
     main{
-        margin-top: 23vh;
+        margin-top: 10vh;
     }
+}
+main {
+    align-items: center;
 }
