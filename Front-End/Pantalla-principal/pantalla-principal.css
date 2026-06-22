@@ -222,11 +222,13 @@ main{
     right: -150px;
     top: 50%;
     transform: translateY(-50%);
+    cursor: pointer;
   }
   .luzAtras{
     left: -150px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) scaleX(-1);
+    cursor: pointer;
   }
   .izquierdaGiro{
     right: -60px;
