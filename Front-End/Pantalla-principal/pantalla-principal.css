@@ -4,6 +4,9 @@
     box-sizing: border-box;
     transition: all 0.3s ease-in;
 }
+.autoBito{
+    z-index: 100;
+}
 body.claro{
     transition: all 0.3s ease-in;
 }
@@ -78,6 +81,7 @@ header{
     margin-top: 97px;
     margin-left: 97px;
     margin-right: 5vw;
+    cursor: pointer;
 }
 
 /* TITULO */
@@ -170,14 +174,14 @@ main{
 }
 
 .camara img {
-    width: 500px;
+    width: 1000px;
     height: 500px;
     object-fit: cover;
 }
 
 @media (max-width: 1600px) {
     .camara img {
-        width: 300px;
+        width: 450px;
         height: 300px;
     }
 }
