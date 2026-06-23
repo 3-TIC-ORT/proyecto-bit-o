@@ -35,13 +35,45 @@
             <img src="http://10.17.97.43:81/stream" alt="ESP32-CAM"/>
         </div>
         <div class="auto" id="auto">
-            <img src="../Imagenes/Carrocería.png" alt="foto del auto BITo" class="autoBito">
             <img src="../Imagenes/alertaDistanciaUp.png" alt="Alerta distancia arriba" class="overlay arriba" id="alertaUp">
             <img src="../Imagenes/alertaDistanciaDown.png" alt="Alerta distancia abajo" class="overlay abajo" id="alertaDown">
             <img src="../Imagenes/alertaDistanciaLeft.png" alt="Alerta distancia izquierda" class="overlay izquierda" id="alertaLeft">
             <img src="../Imagenes/alertaDistanciaRight.png" alt="Alerta distancia derecha" class="overlay derecha" id="alertaRight">
-            <img src="../Imagenes/luzAdelante.png" alt="Luz amarilla del auto" class="overlay luzAdelante" id="luzAdelante">
-            <img src="../Imagenes/luzAdelante.png" alt="Luz trasera del auto" class="overlay luzAtras" id="luzAtras">
+            <svg id="luzAdelante" class="overlay luzAdelante"width="213" height="204" viewBox="0 0 213 204" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_adelante)">
+                <g clip-path="url(#clip1_adelante)">
+                <path d="M38.379 34.4296C31.6005 33.3824 31.6006 23.6176 38.379 22.5704L152.834 4.88683C156.47 4.3251 159.75 7.13762 159.75 10.8165V46.1835C159.75 49.8624 156.47 52.6749 152.834 52.1132L38.379 34.4296Z" fill="currentColor"/>
+                <circle cx="160" cy="28" r="25" fill="currentColor"/>
+                </g>
+                <g clip-path="url(#clip2_adelante)">
+                <path d="M38.379 181.43C31.6005 180.382 31.6006 170.618 38.379 169.57L152.834 151.887C156.47 151.325 159.75 154.138 159.75 157.816V193.184C159.75 196.862 156.47 199.675 152.834 199.113L38.379 181.43Z" fill="currentColor"/>
+                <circle cx="160" cy="175" r="25" fill="currentColor"/>
+                </g>
+            </g>
+            <defs>
+                <clipPath id="clip0_adelante"><rect width="213" height="204"/></clipPath>
+                <clipPath id="clip1_adelante"><rect width="213" height="57"/></clipPath>
+                <clipPath id="clip2_adelante"><rect width="213" height="57" transform="translate(0 147)"/></clipPath>
+            </defs>
+            </svg>
+            <svg id="luzAtras" class="overlay luzAtras" width="213" height="204" viewBox="0 0 213 204" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_atras)">
+                <g clip-path="url(#clip1_atras)">
+                <path d="M38.379 34.4296C31.6005 33.3824 31.6006 23.6176 38.379 22.5704L152.834 4.88683C156.47 4.3251 159.75 7.13762 159.75 10.8165V46.1835C159.75 49.8624 156.47 52.6749 152.834 52.1132L38.379 34.4296Z" fill="currentColor"/>
+                <circle cx="160" cy="28" r="25" fill="currentColor"/>
+                </g>
+                <g clip-path="url(#clip2_atras)">
+                <path d="M38.379 181.43C31.6005 180.382 31.6006 170.618 38.379 169.57L152.834 151.887C156.47 151.325 159.75 154.138 159.75 157.816V193.184C159.75 196.862 156.47 199.675 152.834 199.113L38.379 181.43Z" fill="currentColor"/>
+                <circle cx="160" cy="175" r="25" fill="currentColor"/>
+                </g>
+            </g>
+            <defs>
+                <clipPath id="clip0_atras"><rect width="213" height="204"/></clipPath>
+                <clipPath id="clip1_atras"><rect width="213" height="57"/></clipPath>
+                <clipPath id="clip2_atras"><rect width="213" height="57" transform="translate(0 147)"/></clipPath>
+            </defs>
+            </svg>
+            <img src="../Imagenes/Carrocería.png" alt="foto del auto BITo" class="autoBito">
             <img src="../Imagenes/giro-izquierda.png" alt="aviso giro a la izquierda" class="overlay izquierdaGiro" id="izquierdaGiro">
             <img src="../Imagenes/giro-derecha.png" alt="aviso giro a la derecha" class="overlay derechaGiro" id="derechaGiro"> 
         </div>

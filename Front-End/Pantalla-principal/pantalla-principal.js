@@ -22,34 +22,22 @@ let controlManual = false;
 
 const colors = ["AMARILLO", "ROJO", "AZUL", "VERDE", "VIOLETA", "BLANCO", "CELESTE"];
 
-// luzAdelante base: yellow (hue ~55°) — hue-rotate shifts FROM yellow
-const colorFiltersAdelante = {
-  "AMARILLO": "saturate(2)",
-  "ROJO": "saturate(10) hue-rotate(-70deg) saturate(3) brightness(0.85)",
-  "AZUL":     "hue-rotate(185deg) saturate(2.5)",
-  "VERDE":    "hue-rotate(65deg) saturate(2.2)",
-  "VIOLETA":  "hue-rotate(245deg) saturate(2.5)",
-  "BLANCO":   "saturate(0%) brightness(5)",
-  "CELESTE":  "hue-rotate(130deg) saturate(2)"
-};
-const colorFiltersAtras = {
-  "AMARILLO": "saturate(2)",
-  "ROJO": "saturate(10) hue-rotate(-70deg) saturate(3) brightness(0.85)",
-  "AZUL":     "hue-rotate(185deg) saturate(2.5)",
-  "VERDE":    "hue-rotate(65deg) saturate(2.2)",
-  "VIOLETA":  "hue-rotate(245deg) saturate(2.5)",
-  "BLANCO":   "saturate(0%) brightness(5)",
-  "CELESTE":  "hue-rotate(130deg) saturate(2)"
+const colores = {
+  "AMARILLO": "#FFE600",
+  "ROJO":     "#FF0000",
+  "AZUL":     "#0033FF",
+  "VERDE":    "#00CC00",
+  "VIOLETA":  "#8800FF",
+  "BLANCO":   "#FFFFFF",
+  "CELESTE":  "#00CCFF"
 };
 
 let currentColorIndex = 0;
 let currentColor = colors[0];
 
 function applyColorToLights() {
-  luzAdelante.style.filter = colorFiltersAdelante[currentColor];
-  luzAtras.style.filter = colorFiltersAtras[currentColor];
-  luzAdelante.title = currentColor;
-  luzAtras.title = currentColor;
+  luzAdelante.style.color = colores[currentColor];
+  luzAtras.style.color = colores[currentColor];
 }
 
 function cycleColor() {
@@ -57,7 +45,6 @@ function cycleColor() {
   currentColor = colors[currentColorIndex];
   applyColorToLights();
 }
-
 luzAdelante.addEventListener("click", cycleColor);
 luzAtras.addEventListener("click", cycleColor);
 console.log(modo);
