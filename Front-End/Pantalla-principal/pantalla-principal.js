@@ -20,36 +20,26 @@ const giroDer = document.getElementById("derechaGiro");
 let lucesEncendidas = false;
 let controlManual = false;
 
+import {fiesta} from "./fiesta.js";
+
 const colors = ["AMARILLO", "ROJO", "AZUL", "VERDE", "VIOLETA", "BLANCO", "CELESTE"];
 
-// luzAdelante base: yellow (hue ~55°) — hue-rotate shifts FROM yellow
-const colorFiltersAdelante = {
-  "AMARILLO": "saturate(2)",
-  "ROJO": "saturate(10) hue-rotate(-70deg) saturate(3) brightness(0.85)",
-  "AZUL":     "hue-rotate(185deg) saturate(2.5)",
-  "VERDE":    "hue-rotate(65deg) saturate(2.2)",
-  "VIOLETA":  "hue-rotate(245deg) saturate(2.5)",
-  "BLANCO":   "saturate(0%) brightness(5)",
-  "CELESTE":  "hue-rotate(130deg) saturate(2)"
-};
-const colorFiltersAtras = {
-  "AMARILLO": "saturate(2)",
-  "ROJO": "saturate(10) hue-rotate(-70deg) saturate(3) brightness(0.85)",
-  "AZUL":     "hue-rotate(185deg) saturate(2.5)",
-  "VERDE":    "hue-rotate(65deg) saturate(2.2)",
-  "VIOLETA":  "hue-rotate(245deg) saturate(2.5)",
-  "BLANCO":   "saturate(0%) brightness(5)",
-  "CELESTE":  "hue-rotate(130deg) saturate(2)"
+const colores = {
+  "AMARILLO": "#FFE600",
+  "ROJO":     "#FF0000",
+  "AZUL":     "#0033FF",
+  "VERDE":    "#00CC00",
+  "VIOLETA":  "#8800FF",
+  "BLANCO":   "#FFFFFF",
+  "CELESTE":  "#00CCFF"
 };
 
 let currentColorIndex = 0;
 let currentColor = colors[0];
 
 function applyColorToLights() {
-  luzAdelante.style.filter = colorFiltersAdelante[currentColor];
-  luzAtras.style.filter = colorFiltersAtras[currentColor];
-  luzAdelante.title = currentColor;
-  luzAtras.title = currentColor;
+  luzAdelante.style.color = colores[currentColor];
+  luzAtras.style.color = colores[currentColor];
 }
 
 function cycleColor() {
@@ -57,7 +47,6 @@ function cycleColor() {
   currentColor = colors[currentColorIndex];
   applyColorToLights();
 }
-
 luzAdelante.addEventListener("click", cycleColor);
 luzAtras.addEventListener("click", cycleColor);
 console.log(modo);
@@ -101,36 +90,9 @@ function toggleMode(){
     }
     luzAdelante.addEventListener("click", cambiarLuz);
     luzAtras.addEventListener("click", cambiarLuz);
-    logo.addEventListener("click", fiesta);
-    function fiesta() {
-      postEvent("teclaL", { msg: "FIESTA" });
-    
-      const colors = [
-        "#ff0080", "#ff6600", "#ffff00", "#00ff00",
-        "#00ffff", "#0066ff", "#cc00ff", "#ff0055",
-        "#ff9900", "#00ff99", "#ff00ff", "#00ccff"
-      ];
-    
-      let i = 0;
-      const interval = setInterval(() => {
-        const c1 = colors[i % colors.length];
-        const c2 = colors[(i + 3) % colors.length];
-        const c3 = colors[(i + 6) % colors.length];
-    
-        document.body.style.background =
-          `linear-gradient(${i * 37}deg, ${c1}, ${c2}, ${c3})`;
-        document.body.style.transition = "background 0.1s ease";
-    
-        i++;
-      }, 120);
-    
-      setTimeout(() => {
-        clearInterval(interval);
-        document.body.style.background = "";
-        document.body.style.transition = "";
-        postEvent("teclaL", { msg: "APAGAR" });
-      }, 5000);
-    }
+    logo.addEventListener("click", () => fiesta(lucesEncendidas, () => {
+      lucesEncendidas = false;
+    }));
     if (event.key === "ArrowUp" || event.key === "w" || event.key === "W") {
       console.log("Se presionó la flecha ↑");
       postEvent("teclaUpOn", {msg: `${event.key}On`});
