@@ -20,6 +20,8 @@ const giroDer = document.getElementById("derechaGiro");
 let lucesEncendidas = false;
 let controlManual = false;
 
+import {fiesta} from "./fiesta.js";
+
 const colors = ["AMARILLO", "ROJO", "AZUL", "VERDE", "VIOLETA", "BLANCO", "CELESTE"];
 
 const colores = {
@@ -88,36 +90,9 @@ function toggleMode(){
     }
     luzAdelante.addEventListener("click", cambiarLuz);
     luzAtras.addEventListener("click", cambiarLuz);
-    logo.addEventListener("click", fiesta);
-    function fiesta() {
-      postEvent("teclaL", { msg: "FIESTA" });
-    
-      const colors = [
-        "#ff0080", "#ff6600", "#ffff00", "#00ff00",
-        "#00ffff", "#0066ff", "#cc00ff", "#ff0055",
-        "#ff9900", "#00ff99", "#ff00ff", "#00ccff"
-      ];
-    
-      let i = 0;
-      const interval = setInterval(() => {
-        const c1 = colors[i % colors.length];
-        const c2 = colors[(i + 3) % colors.length];
-        const c3 = colors[(i + 6) % colors.length];
-    
-        document.body.style.background =
-          `linear-gradient(${i * 37}deg, ${c1}, ${c2}, ${c3})`;
-        document.body.style.transition = "background 0.1s ease";
-    
-        i++;
-      }, 120);
-    
-      setTimeout(() => {
-        clearInterval(interval);
-        document.body.style.background = "";
-        document.body.style.transition = "";
-        postEvent("teclaL", { msg: "APAGAR" });
-      }, 5000);
-    }
+    logo.addEventListener("click", () => fiesta(lucesEncendidas, () => {
+      lucesEncendidas = false;
+    }));
     if (event.key === "ArrowUp" || event.key === "w" || event.key === "W") {
       console.log("Se presionó la flecha ↑");
       postEvent("teclaUpOn", {msg: `${event.key}On`});
